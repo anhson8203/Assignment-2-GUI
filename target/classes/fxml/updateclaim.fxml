@@ -23,7 +23,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter New Claim Amount:">
+      <Text layoutX="97.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter New Manager.Claim Amount:">
          <font>
             <Font size="15.0" />
          </font>
@@ -49,7 +49,7 @@
          </font>
       </Button>
       <Button fx:id="backBtn" layoutX="660.0" layoutY="12.0" mnemonicParsing="false" text="Back" />
-      <Text layoutX="97.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Claim ID:">
+      <Text layoutX="97.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Manager.Claim ID:">
          <font>
             <Font size="15.0" />
          </font>

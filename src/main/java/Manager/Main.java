@@ -1,3 +1,5 @@
+package Manager;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -9,7 +11,7 @@ public class Main {
         Login login = Login.login();
 
         while (login == null) {
-            System.out.println("\nLogin failed! Please try again.\n");
+            System.out.println("\nManager.Login failed! Please try again.\n");
             login = Login.login();
         }
 
@@ -149,7 +151,7 @@ public class Main {
                                 break;
                             case 4:
                                 // Code to retrieve all the customers
-                                System.out.print("Enter role filter (PolicyHolder, Dependent, or leave blank for all): ");
+                                System.out.print("Enter role filter (Manager.PolicyHolder, Manager.Dependent, or leave blank for all): ");
                                 String roleFilter = scanner.nextLine();
                                 roleFilter = roleFilter.isEmpty() ? null : roleFilter;
                                 System.out.print("Enter name filter (or leave blank for all): ");

@@ -7,4 +7,5 @@ IS1,pass321,insurance surveyor
 IM1,pass654,insurance manager
 admin,admin,admin
 c4366406,pass123,policy holder
-c6225266,1,dependent
+c645266,1,dependent
+c6225266,1,admin

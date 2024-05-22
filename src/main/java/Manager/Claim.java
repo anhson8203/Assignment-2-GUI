@@ -1,3 +1,5 @@
+package Manager;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,7 +90,7 @@ public class Claim {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(String.format("Claim ID: %-10s Claim Date: %-10s Insured Person: %-20s Card Number: %-10s Claim Amount: %-10.2f Status: %s\n", id, claimDate, insuredPerson.getFullName(), cardNumber.getCardNumber(), claimAmount, status));
+        sb.append(String.format("Manager.Claim ID: %-10s Manager.Claim Date: %-10s Insured Person: %-20s Card Number: %-10s Manager.Claim Amount: %-10.2f Status: %s\n", id, claimDate, insuredPerson.getFullName(), cardNumber.getCardNumber(), claimAmount, status));
 
         if (documents != null && !documents.isEmpty()) {
             sb.append("Documents:\n");

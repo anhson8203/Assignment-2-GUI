@@ -1,3 +1,5 @@
+package Manager;
+
 public class Provider {
     private String providerID;
     private String providerName;
@@ -26,7 +28,7 @@ public class Provider {
     public void setProviderAddress(String providerAddress) {
         this.providerAddress = providerAddress;
     }
-    // In the Provider class
+    // In the Manager.Provider class
     public String getProviderID() {
         return this.providerID;
     }

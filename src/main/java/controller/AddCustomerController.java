@@ -1,5 +1,9 @@
 package controller;
 
+import Manager.Customer;
+import Manager.CustomerService;
+import Manager.Dependent;
+import Manager.PolicyHolder;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -7,6 +11,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class AddCustomerController extends MainController {
@@ -38,6 +43,31 @@ public class AddCustomerController extends MainController {
     }
 
     public void handleDone() {
+        CustomerService customerService = new CustomerService();
+        PolicyHolder policyHolder = new PolicyHolder();
+        Dependent dependent = new Dependent();
+        Random random = new Random();
+        StringBuilder customerIdBuilder = new StringBuilder("c");
+        for (int i = 0; i < 7; i++) {
+            customerIdBuilder.append(random.nextInt(7));
+        }
+        if(policyholderRadioBtn.isSelected()){
+            policyHolder.setId(customerIdBuilder.toString());
+            policyHolder.setEmail(email.getText().trim());
+            policyHolder.setFullName(name.getText().trim());
+            policyHolder.setAddress(address.getText());
+            policyHolder.setPhoneNumber(phoneNumber.getText());
+            customerService.addCustomer(policyHolder);
+        }
+        if(dependentRadioBtn.isSelected()){
+            dependent.setId(customerIdBuilder.toString());
+            dependent.setEmail(email.getText().trim());
+            dependent.setFullName(name.getText().trim());
+            dependent.setAddress(address.getText());
+            dependent.setPhoneNumber(phoneNumber.getText());
+            customerService.addCustomer(dependent);
+        }
+
         showAlert("Done", "Add new customer successfully", Alert.AlertType.INFORMATION);
         name.setText("");
         phoneNumber.setText("");

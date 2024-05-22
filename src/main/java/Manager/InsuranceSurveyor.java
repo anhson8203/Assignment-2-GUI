@@ -1,3 +1,5 @@
+package Manager;
+
 import java.util.List;
 
 public class InsuranceSurveyor extends Provider {
@@ -6,7 +8,7 @@ public class InsuranceSurveyor extends Provider {
     public InsuranceSurveyor(String providerID, String providerName, String providerAddress) {
         super(providerID, providerName, providerAddress);
     }
-    // In the InsuranceSurveyor class
+    // In the Manager.InsuranceSurveyor class
     public InsuranceManager getManager(List<Provider> providers) {
         for (Provider provider : providers) {
             if (provider instanceof InsuranceManager) {

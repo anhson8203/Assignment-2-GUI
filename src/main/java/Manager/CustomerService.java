@@ -1,3 +1,5 @@
+package Manager;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -112,7 +114,7 @@ public class CustomerService {
             try {
                 claimAmount = Double.parseDouble(input);
                 if (claimAmount <= 0) {
-                    System.out.println("\nClaim amount must be greater than zero. Please try again.\n");
+                    System.out.println("\nManager.Claim amount must be greater than zero. Please try again.\n");
                     claimAmount = null;
                 }
             } catch (NumberFormatException e) {
@@ -185,7 +187,7 @@ public class CustomerService {
 
         try {
             dataLoader.saveClaims(claims);
-            System.out.println("Claim added successfully.");
+            System.out.println("Manager.Claim added successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
@@ -200,7 +202,7 @@ public class CustomerService {
         Claim claim = claims.stream().filter(c -> c.getId().equals(claimId)).findFirst().orElse(null);
 
         if (claim == null || (!claim.getInsuredPerson().getId().equals(customerId) && !(customer instanceof PolicyHolder && ((PolicyHolder) customer).getDependents().contains(claim.getInsuredPerson())))) {
-            System.out.println("Claim not found or you do not have permission to update this claim!");
+            System.out.println("Manager.Claim not found or you do not have permission to update this claim!");
             return;
         }
 
@@ -261,7 +263,7 @@ public class CustomerService {
             try {
                 claimAmount = Double.parseDouble(input);
                 if (claimAmount <= 0) {
-                    System.out.println("\nClaim amount must be greater than zero. Please try again.\n");
+                    System.out.println("\nManager.Claim amount must be greater than zero. Please try again.\n");
                     claimAmount = null;
                 }
             } catch (NumberFormatException e) {
@@ -329,7 +331,7 @@ public class CustomerService {
 
         try {
             dataLoader.saveClaims(claims);
-            System.out.println("Claim updated successfully.");
+            System.out.println("Manager.Claim updated successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("Error saving claims: " + e.getMessage());
         }
@@ -363,7 +365,7 @@ public class CustomerService {
                 System.out.println("No claims found for this customer.");
             }
         } else {
-            System.out.println("Customer not found!");
+            System.out.println("Manager.Customer not found!");
         }
     }
 
@@ -374,7 +376,7 @@ public class CustomerService {
         if (customer != null) {
             System.out.println("\n" + customer);
         } else {
-            System.out.println("Customer not found!");
+            System.out.println("Manager.Customer not found!");
         }
     }
 
@@ -400,7 +402,7 @@ public class CustomerService {
 
             try {
                 dataLoader.saveCustomers(customers);
-                List<Login> logins = dataLoader.loadLogins(); // Call loadLogins from the DataLoader instance
+                List<Login> logins = dataLoader.loadLogins(); // Call loadLogins from the Manager.DataLoader instance
                 logins.stream().filter(l -> l.getUsername().equals(login.getUsername())).findFirst().ifPresent(currentLogin -> currentLogin.setPassword(newPassword));
 
                 dataLoader.saveAccounts(logins);
@@ -409,7 +411,7 @@ public class CustomerService {
                 System.out.println("Error saving customers: " + e.getMessage());
             }
         } else {
-            System.out.println("Customer not found!");
+            System.out.println("Manager.Customer not found!");
         }
     }
 
@@ -425,7 +427,7 @@ public class CustomerService {
             Dependent dependent = policyHolder.getDependents().stream().filter(d -> d.getId().equals(dependentId)).findFirst().orElse(null);
 
             if (dependent == null) {
-                System.out.println("Dependent not found or you do not have permission to update this dependent!");
+                System.out.println("Manager.Dependent not found or you do not have permission to update this dependent!");
                 return;
             }
 
@@ -442,12 +444,12 @@ public class CustomerService {
 
             try {
                 dataLoader.saveCustomers(customers);
-                System.out.println("\nDependent's information updated successfully.");
+                System.out.println("\nManager.Dependent's information updated successfully.");
             } catch (FileNotFoundException e) {
                 System.out.println("Error saving customers: " + e.getMessage());
             }
         } else {
-            System.out.println("Customer not found or not a policy holder.");
+            System.out.println("Manager.Customer not found or not a policy holder.");
         }
     }
 
@@ -465,7 +467,7 @@ public class CustomerService {
                 }
             }
         } else {
-            System.out.println("Customer not found or not a policy holder.");
+            System.out.println("Manager.Customer not found or not a policy holder.");
         }
     }
 
@@ -483,7 +485,7 @@ public class CustomerService {
         Dependent dependent = policyHolder.getDependents().stream().filter(d -> d.getId().equals(dependentId)).findFirst().orElse(null);
 
         if (dependent == null) {
-            System.out.println("Dependent not found!");
+            System.out.println("Manager.Dependent not found!");
             return;
         }
 
@@ -500,7 +502,7 @@ public class CustomerService {
 
         try {
             dataLoader.saveCustomers(customers);
-            System.out.println("\nDependent's information updated successfully.");
+            System.out.println("\nManager.Dependent's information updated successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("Error saving customers: " + e.getMessage());
         }
@@ -560,7 +562,7 @@ public class CustomerService {
             try {
                 claimAmount = Double.parseDouble(input);
                 if (claimAmount <= 0) {
-                    System.out.println("\nClaim amount must be greater than zero. Please try again.\n");
+                    System.out.println("\nManager.Claim amount must be greater than zero. Please try again.\n");
                     claimAmount = null;
                 }
             } catch (NumberFormatException e) {
@@ -632,7 +634,7 @@ public class CustomerService {
 
         try {
             dataLoader.saveClaims(claims);
-            System.out.println("Claim added successfully.");
+            System.out.println("Manager.Claim added successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
@@ -656,7 +658,7 @@ public class CustomerService {
         String claimId = scanner.next();
         Claim claimToUpdate = claims.stream().filter(c -> c.getId().equals(claimId) && c.getInsuredPerson().getId().equals(beneficiaryId)).findFirst().orElse(null);
         if (claimToUpdate == null) {
-            System.out.println("\nClaim not found. Please try again.\n");
+            System.out.println("\nManager.Claim not found. Please try again.\n");
             return;
         }
 
@@ -670,7 +672,7 @@ public class CustomerService {
             System.out.println("An error occurred while saving the claims.");
         }
 
-        System.out.println("Claim updated successfully.");
+        System.out.println("Manager.Claim updated successfully.");
     }
 
     public void deleteBeneficiaryClaim() {
@@ -691,7 +693,7 @@ public class CustomerService {
         String claimId = scanner.next();
         Claim claimToDelete = claims.stream().filter(c -> c.getId().equals(claimId) && c.getInsuredPerson().getId().equals(beneficiaryId)).findFirst().orElse(null);
         if (claimToDelete == null) {
-            System.out.println("\nClaim not found. Please try again.\n");
+            System.out.println("\nManager.Claim not found. Please try again.\n");
             return;
         }
 
@@ -700,7 +702,7 @@ public class CustomerService {
 
         try {
             dataLoader.saveClaims(claims);
-            System.out.println("Claim deleted successfully.");
+            System.out.println("Manager.Claim deleted successfully.");
         } catch (FileNotFoundException e) {
             System.out.println("File not found!");
         }
@@ -752,7 +754,7 @@ public class CustomerService {
         String beneficiaryEmail = scanner.nextLine();
 
         // Ask for the type of beneficiary
-        System.out.print("Enter type of beneficiary (1 for PolicyHolder, 2 for Dependent): ");
+        System.out.print("Enter type of beneficiary (1 for Manager.PolicyHolder, 2 for Manager.Dependent): ");
         int beneficiaryType = scanner.nextInt();
         scanner.nextLine(); // consume the newline
 
@@ -775,7 +777,7 @@ public class CustomerService {
             beneficiary = new Dependent(beneficiaryId, beneficiaryFullName, null, policyHolder);
             role = "dependent";
         } else {
-            System.out.println("Invalid customer role. Please enter 1 for PolicyHolder or 2 for Dependent.");
+            System.out.println("Invalid customer role. Please enter 1 for Manager.PolicyHolder or 2 for Manager.Dependent.");
             return;
         }
 
@@ -796,7 +798,7 @@ public class CustomerService {
         try {
             dataLoader.appendCustomerToFile(beneficiary);
             dataLoader.appendAccountToFile(beneficiaryId, role);
-            System.out.println("\nCustomer added successfully!");
+            System.out.println("\nManager.Customer added successfully!");
             System.out.println("An account is also created for the customer, with username is " + beneficiaryId + " and password is '1'.");
         } catch (IOException e) {
             System.out.println("An error occurred while saving customers.");
@@ -925,12 +927,12 @@ public class CustomerService {
 
             try {
                 dataLoader.saveCustomers(customers);
-                System.out.println("\nDependent's information updated successfully.");
+                System.out.println("\nManager.Dependent's information updated successfully.");
             } catch (FileNotFoundException e) {
                 System.out.println("Error saving customers: " + e.getMessage());
             }
         } else {
-            System.out.println("Dependent not found.");
+            System.out.println("Manager.Dependent not found.");
         }
     }
 
@@ -942,7 +944,7 @@ public class CustomerService {
         if (dependent != null) {
             System.out.println(dependent);
         } else {
-            System.out.println("Dependent not found.");
+            System.out.println("Manager.Dependent not found.");
         }
     }
 
@@ -960,7 +962,7 @@ public class CustomerService {
                 System.out.println("An error occurred while saving customers.");
             }
         } else {
-            System.out.println("Dependent not found.");
+            System.out.println("Manager.Dependent not found.");
         }
     }
     public void retrieveAllClaims() {
@@ -1008,12 +1010,12 @@ public class CustomerService {
             // Save the updated list of customers
             try {
                 dataLoader.saveCustomers(customers);
-                System.out.println("Customer deleted successfully.");
+                System.out.println("Manager.Customer deleted successfully.");
             } catch (FileNotFoundException e) {
                 System.out.println("An error occurred while saving customers.");
             }
         } else {
-            System.out.println("Customer not found.");
+            System.out.println("Manager.Customer not found.");
         }
     }
 
@@ -1053,7 +1055,7 @@ public class CustomerService {
                 System.out.println("An error occurred while saving customers.");
             }
         } else {
-            System.out.println("Customer not found.");
+            System.out.println("Manager.Customer not found.");
         }
     }
 
@@ -1090,12 +1092,12 @@ public class CustomerService {
             Claim claim = manager.getProposedClaims().stream().filter(c -> c.getId().equals(claimId)).findFirst().orElse(null);
             if (claim != null) {
                 claim.setStatus(ClaimStatus.APPROVED);
-                System.out.println("Claim " + claimId + " has been approved.");
+                System.out.println("Manager.Claim " + claimId + " has been approved.");
             } else {
                 System.out.println("This claim is not proposed by you, so you can't approve it.");
             }
         } else {
-            System.out.println("Provider not found or not an insurance manager.");
+            System.out.println("Manager.Provider not found or not an insurance manager.");
         }
     }
 
@@ -1108,12 +1110,12 @@ public class CustomerService {
             Claim claim = manager.getProposedClaims().stream().filter(c -> c.getId().equals(claimId)).findFirst().orElse(null);
             if (claim != null) {
                 claim.setStatus(ClaimStatus.REJECTED);
-                System.out.println("Claim " + claimId + " has been rejected.");
+                System.out.println("Manager.Claim " + claimId + " has been rejected.");
             } else {
                 System.out.println("This claim is not proposed by you, so you can't reject it.");
             }
         } else {
-            System.out.println("Provider not found or not an insurance manager.");
+            System.out.println("Manager.Provider not found or not an insurance manager.");
         }
     }
     public void retrieveAllClaimsFiltered(ClaimStatus statusFilter, String customerIdFilter) {
@@ -1140,7 +1142,7 @@ public class CustomerService {
         if (provider instanceof InsuranceManager manager) {
             manager.retrieveSurveyorsInfo();
         } else {
-            System.out.println("Provider not found or not an insurance manager.");
+            System.out.println("Manager.Provider not found or not an insurance manager.");
         }
     }
 }

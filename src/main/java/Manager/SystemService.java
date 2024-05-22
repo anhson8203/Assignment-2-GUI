@@ -1,3 +1,5 @@
+package Manager;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -65,7 +67,7 @@ public class SystemService {
         System.out.print("Enter customer email: ");
         String customerEmail = scanner.nextLine();
 
-        System.out.print("Enter customer role (1 for PolicyHolder, 2 for Dependent): ");
+        System.out.print("Enter customer role (1 for Manager.PolicyHolder, 2 for Manager.Dependent): ");
         int customerRole = scanner.nextInt();
         scanner.nextLine();
 
@@ -88,7 +90,7 @@ public class SystemService {
             newCustomer = new Dependent(customerId, customerFullName, null, policyHolder);
             role = "dependent";
         } else {
-            System.out.println("Invalid customer role. Please enter 1 for PolicyHolder or 2 for Dependent.");
+            System.out.println("Invalid customer role. Please enter 1 for Manager.PolicyHolder or 2 for Manager.Dependent.");
             return;
         }
 
@@ -101,7 +103,7 @@ public class SystemService {
         try {
             dataLoader.appendCustomerToFile(newCustomer);
             dataLoader.appendAccountToFile(customerId, role);
-            System.out.println("\nCustomer added successfully!");
+            System.out.println("\nManager.Customer added successfully!");
             System.out.println("An account is also created for the customer, with username is " + customerId + " and password is '1'.");
         } catch (IOException e) {
             System.out.println("An error occurred while saving customers.");
@@ -134,7 +136,7 @@ public class SystemService {
                 System.out.println("An error occurred while saving customers.");
             }
         } else {
-            System.out.println("Customer not found!");
+            System.out.println("Manager.Customer not found!");
         }
     }
 
@@ -148,12 +150,12 @@ public class SystemService {
 
             try {
                 dataLoader.saveCustomers(customers);
-                System.out.println("Customer deleted successfully.");
+                System.out.println("Manager.Customer deleted successfully.");
             } catch (FileNotFoundException e) {
                 System.out.println("An error occurred while saving customers.");
             }
         } else {
-            System.out.println("Customer not found!");
+            System.out.println("Manager.Customer not found!");
         }
     }
 

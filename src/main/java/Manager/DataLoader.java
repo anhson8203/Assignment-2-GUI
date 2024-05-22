@@ -1,3 +1,5 @@
+package Manager;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
@@ -8,7 +10,7 @@ public class DataLoader {
     public List<Customer> loadCustomers() throws FileNotFoundException {
         List<Customer> customers = new ArrayList<>();
         Map<String, PolicyHolder> policyHolders = new HashMap<>();
-        Scanner scanner = new Scanner(new File("customers.txt"));
+        Scanner scanner = new Scanner(new File("src/main/resources/database/customers.txt"));
         while (scanner.hasNextLine()) {
             String[] data = scanner.nextLine().split(",");
             if (data[2].equals("PolicyHolder")) {
@@ -36,7 +38,7 @@ public class DataLoader {
 
     public List<InsuranceCard> loadInsuranceCards(List<Customer> customers) throws FileNotFoundException {
         List<InsuranceCard> insuranceCards = new ArrayList<>();
-        Scanner scanner = new Scanner(new File("insuranceCards.txt"));
+        Scanner scanner = new Scanner(new File("src/main/resources/database/insuranceCards.txt"));
         while (scanner.hasNextLine()) {
             String[] data = scanner.nextLine().split(",");
             Customer cardHolder = customers.stream().filter(c -> c.getId().equals(data[1])).findFirst().orElse(null);
@@ -52,7 +54,7 @@ public class DataLoader {
 
     public List<Claim> loadClaims(List<Customer> customers, List<InsuranceCard> insuranceCards) throws FileNotFoundException {
         List<Claim> claims = new ArrayList<>();
-        Scanner scanner = new Scanner(new File("claims.txt"));
+        Scanner scanner = new Scanner(new File("src/main/resources/database/claims.txt"));
         while (scanner.hasNextLine()) {
             String[] data = scanner.nextLine().split(",");
             Customer insuredPerson = customers.stream().filter(c -> c.getId().equals(data[2])).findFirst().orElse(null);
@@ -63,7 +65,7 @@ public class DataLoader {
                     claim.setId(data[0]);
                     claim.setClaimDate(LocalDate.parse(data[1]));
                     claim.setInsuredPerson(insuredPerson);
-                    claim.setCardNumber(card); // set the InsuranceCard object, not the String
+                    claim.setCardNumber(card); // set the Manager.InsuranceCard object, not the String
                     claim.setExamDate(LocalDate.parse(data[4]));
                     claim.setClaimAmount(Double.parseDouble(data[5]));
                     claim.setStatus(ClaimStatus.valueOf(data[6]));
@@ -91,12 +93,12 @@ public class DataLoader {
     }
 
     public void saveCustomers(List<Customer> customers) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new File("customers.txt"));
+        PrintWriter writer = new PrintWriter(new File("src/main/resources/database/customers.txt"));
         for (Customer customer : customers) {
             if (customer instanceof PolicyHolder policyHolder) {
-                writer.println(customer.getId() + "," + customer.getFullName() + ",PolicyHolder," + policyHolder.getPhoneNumber() + "," + policyHolder.getAddress() + "," + policyHolder.getEmail());
+                writer.println(customer.getId() + "," + customer.getFullName() + ",Manager.PolicyHolder," + policyHolder.getPhoneNumber() + "," + policyHolder.getAddress() + "," + policyHolder.getEmail());
                 for (Dependent dependent : policyHolder.getDependents()) {
-                    writer.println(dependent.getId() + "," + dependent.getFullName() + ",Dependent," + policyHolder.getId() + "," + dependent.getPhoneNumber() + "," + dependent.getAddress() + "," + dependent.getEmail());
+                    writer.println(dependent.getId() + "," + dependent.getFullName() + ",Manager.Dependent," + policyHolder.getId() + "," + dependent.getPhoneNumber() + "," + dependent.getAddress() + "," + dependent.getEmail());
                 }
             }
         }
@@ -104,7 +106,7 @@ public class DataLoader {
     }
 
     public void saveInsuranceCards(List<InsuranceCard> insuranceCards) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new File("insuranceCards.txt"));
+        PrintWriter writer = new PrintWriter(new File("src/main/resources/database/insuranceCards.txt"));
         for (InsuranceCard insuranceCard : insuranceCards) {
             writer.println(insuranceCard.getCardNumber() + "," + insuranceCard.getCardHolder().getId() + "," + insuranceCard.getPolicyOwner() + "," + insuranceCard.getExpirationDate());
         }
@@ -112,7 +114,7 @@ public class DataLoader {
     }
 
     public void saveClaims(List<Claim> claims) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new File("claims.txt"));
+        PrintWriter writer = new PrintWriter(new File("src/main/resources/database/claims.txt"));
         for (Claim claim : claims) {
             List<String> documentNames = new ArrayList<>();
             for (String document : claim.getDocuments()) {
@@ -129,7 +131,7 @@ public class DataLoader {
     }
 
     public void saveAccounts(List<Login> logins) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new File("accounts.txt"));
+        PrintWriter writer = new PrintWriter(new File("src/main/resources/database/accounts.txt"));
         for (Login login : logins) {
             writer.println(login.getUsername() + "," + login.getPassword() + "," + login.getRole());
         }
@@ -138,7 +140,7 @@ public class DataLoader {
 
     public List<Login> loadLogins() throws FileNotFoundException {
         List<Login> logins = new ArrayList<>();
-        Scanner scanner = new Scanner(new File("accounts.txt"));
+        Scanner scanner = new Scanner(new File("src/main/resources/database/accounts.txt"));
         while (scanner.hasNextLine()) {
             String[] data = scanner.nextLine().split(",");
             Login login = new Login(data[0], data[1], data[2]);
@@ -149,17 +151,17 @@ public class DataLoader {
     }
 
     public void saveProviders(List<Provider> providers) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new File("providers.txt"));
+        PrintWriter writer = new PrintWriter(new File("src/main/resources/database/providers.txt"));
         for (Provider provider : providers) {
             if (provider instanceof InsuranceManager manager) {
                 String proposedClaims = manager.getProposedClaims().stream().map(Claim::getId).collect(Collectors.joining("|"));
-                writer.println(manager.getProviderID() + "," + manager.getProviderName() + "," + manager.getProviderAddress() + ",InsuranceManager," + proposedClaims);
+                writer.println(manager.getProviderID() + "," + manager.getProviderName() + "," + manager.getProviderAddress() + ",Manager.InsuranceManager," + proposedClaims);
             } else if (provider instanceof InsuranceSurveyor surveyor) {
                 InsuranceManager manager = surveyor.getManager(providers);
                 if (manager != null) {
-                    writer.println(surveyor.getProviderID() + "," + surveyor.getProviderName() + "," + surveyor.getProviderAddress() + ",InsuranceSurveyor," + manager.getProviderID());
+                    writer.println(surveyor.getProviderID() + "," + surveyor.getProviderName() + "," + surveyor.getProviderAddress() + ",Manager.InsuranceSurveyor," + manager.getProviderID());
                 } else {
-                    writer.println(surveyor.getProviderID() + "," + surveyor.getProviderName() + "," + surveyor.getProviderAddress() + ",InsuranceSurveyor");
+                    writer.println(surveyor.getProviderID() + "," + surveyor.getProviderName() + "," + surveyor.getProviderAddress() + ",Manager.InsuranceSurveyor");
                 }
             }
         }
@@ -169,10 +171,10 @@ public class DataLoader {
     public List<Provider> loadProviders() throws FileNotFoundException {
         List<Provider> providers = new ArrayList<>();
         Map<String, InsuranceManager> managers = new HashMap<>();
-        Scanner scanner = new Scanner(new File("providers.txt"));
+        Scanner scanner = new Scanner(new File("src/main/resources/database/providers.txt"));
         while (scanner.hasNextLine()) {
             String[] data = scanner.nextLine().split(",");
-            if (data[3].equals("InsuranceManager")) {
+            if (data[3].equals("Manager.InsuranceManager")) {
                 InsuranceManager manager = new InsuranceManager(data[0], data[1], data[2]);
                 String[] claimIds = data[4].split("\\|");
                 for (String claimId : claimIds) {
@@ -182,7 +184,7 @@ public class DataLoader {
                 }
                 providers.add(manager);
                 managers.put(manager.getProviderID(), manager);
-            } else if (data[3].equals("InsuranceSurveyor")) {
+            } else if (data[3].equals("Manager.InsuranceSurveyor")) {
                 InsuranceSurveyor surveyor = new InsuranceSurveyor(data[0], data[1], data[2]);
                 providers.add(surveyor);
                 // Associate the surveyor with its manager
@@ -199,15 +201,15 @@ public class DataLoader {
     }
 
     public void appendCustomerToFile(Customer customer) throws IOException {
-        try (PrintWriter out = new PrintWriter(new FileWriter("customers.txt", true))) {
-            String customerRole = customer instanceof PolicyHolder ? "PolicyHolder" : "Dependent";
+        try (PrintWriter out = new PrintWriter(new FileWriter("src/main/resources/database/customers.txt", true))) {
+            String customerRole = customer instanceof PolicyHolder ? "Manager.PolicyHolder" : "Manager.Dependent";
             String policyHolderId = customer instanceof Dependent ? ((Dependent) customer).getPolicyHolder().getId() : "";
             out.println(customer.getId() + "," + customer.getFullName() + "," + customerRole + "," + policyHolderId + "," + customer.getPhoneNumber() + "," + customer.getAddress() + "," + customer.getEmail());
         }
     }
 
     public void appendAccountToFile(String username, String role) throws IOException {
-        try (PrintWriter out = new PrintWriter(new FileWriter("accounts.txt", true))) {
+        try (PrintWriter out = new PrintWriter(new FileWriter("src/main/resources/database/accounts.txt", true))) {
             out.println(username + ",1," + role);
         }
     }

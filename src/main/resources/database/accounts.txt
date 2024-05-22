@@ -1,0 +1,11 @@
+c3979293,1,policy holder
+user1,pass456,dependent
+c3979294,pass456,dependent
+c3979308,pass000,dependent
+RMIT,pass789,policy owner
+IS1,pass321,insurance surveyor
+IM1,pass654,insurance manager
+admin,admin,admin
+c4366406,pass123,policy holder
+c645266,1,dependent
+c6225266,1,admin

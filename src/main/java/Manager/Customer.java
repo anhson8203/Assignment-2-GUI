@@ -1,3 +1,5 @@
+package Manager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +44,9 @@ public abstract class Customer implements ClaimProcessManager {
         this.claims = new ArrayList<>();
     }
 
+    public Customer() {
+    }
+
     public InsuranceCard getInsuranceCard() {
         return insuranceCard;
     }
@@ -76,7 +81,7 @@ public abstract class Customer implements ClaimProcessManager {
 
     @Override
     public String toString() {
-        return "Customer ID: " + id + "\n" +
+        return "Manager.Customer ID: " + id + "\n" +
             "Full Name: " + fullName + "\n" +
             "Insurance Card: " + (insuranceCard != null ? insuranceCard.getCardNumber() : "No card") + "\n" +
             "Phone Number: " + phoneNumber + "\n" +

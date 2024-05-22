@@ -27,7 +27,7 @@ public class ApproveClaimController extends MainController {
     }
 
     public void handleApprove() {
-        showAlert("Approve", "Claim ID does not exist", Alert.AlertType.CONFIRMATION);
+        showAlert("Approve", "Manager.Claim ID does not exist", Alert.AlertType.CONFIRMATION);
         claimId.setText("");
     }
 }

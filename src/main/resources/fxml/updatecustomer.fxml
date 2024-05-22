@@ -13,22 +13,22 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Customer ID">
+      <Text layoutX="97.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Manager.Customer ID">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Customer full name:">
+      <Text layoutX="97.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Manager.Customer full name:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Customer Phone Number:">
+      <Text layoutX="97.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Manager.Customer Phone Number:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Customer Address:">
+      <Text layoutX="97.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Manager.Customer Address:">
          <font>
             <Font size="15.0" />
          </font>
@@ -43,7 +43,7 @@
          </font>
       </Button>
       <Button fx:id="backBtn" layoutX="660.0" layoutY="12.0" mnemonicParsing="false" text="Back" />
-      <Text layoutX="97.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Customer Email:">
+      <Text layoutX="97.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Manager.Customer Email:">
          <font>
             <Font size="15.0" />
          </font>

@@ -33,7 +33,7 @@ public class UpdateDependentController extends MainController {
     }
 
     public void handleSave() {
-        showAlert("Save", "Update Dependent’s Information successfully", Alert.AlertType.INFORMATION);
+        showAlert("Save", "Update Manager.Dependent’s Information successfully", Alert.AlertType.INFORMATION);
         dependentId.setText("");
         phoneNumber.setText("");
         address.setText("");

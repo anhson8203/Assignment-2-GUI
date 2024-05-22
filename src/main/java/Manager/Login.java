@@ -1,3 +1,5 @@
+package Manager;
+
 import java.util.List;
 import java.util.Scanner;
 import java.io.File;
@@ -70,7 +72,7 @@ public class Login {
                         return new Login(parts[0], parts[1], parts[2]);
                     }
                 }
-                // Check for InsuranceSurveyor
+                // Check for Manager.InsuranceSurveyor
                 for (Provider provider : providers) {
                     if (provider.getProviderID().equals(username)) {
                         return new Login(parts[0], parts[1], parts[2]);

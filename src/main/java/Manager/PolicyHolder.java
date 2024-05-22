@@ -1,3 +1,5 @@
+package Manager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,10 @@ public class PolicyHolder extends Customer {
     public PolicyHolder(String id, String fullName, InsuranceCard insuranceCard) {
         super(id, fullName, insuranceCard);
         this.dependents = new ArrayList<>();
+    }
+
+    public PolicyHolder() {
+
     }
 
     public List<Dependent> getDependents() {

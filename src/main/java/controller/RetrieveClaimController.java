@@ -34,6 +34,6 @@ public class RetrieveClaimController extends MainController {
     }
 
     public void handleSave() {
-        showAlert("Retrieve", "Claim ID does not exist", Alert.AlertType.CONFIRMATION);
+        showAlert("Retrieve", "Manager.Claim ID does not exist", Alert.AlertType.CONFIRMATION);
     }
 }

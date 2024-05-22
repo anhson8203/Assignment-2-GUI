@@ -11,7 +11,7 @@ import java.util.Objects;
 public class runApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/admin.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
         Scene scene = new Scene(root);
         primaryStage.setTitle("App");
         primaryStage.setScene(scene);

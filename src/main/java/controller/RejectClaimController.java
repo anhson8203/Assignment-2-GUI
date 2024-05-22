@@ -27,7 +27,7 @@ public class RejectClaimController extends MainController {
     }
 
     public void handleReject() {
-        showAlert("Reject", "Claim ID does not exist", Alert.AlertType.CONFIRMATION);
+        showAlert("Reject", "Manager.Claim ID does not exist", Alert.AlertType.CONFIRMATION);
         claimId.setText("");
     }
 }

@@ -23,7 +23,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Claim Amount:">
+      <Text layoutX="97.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Manager.Claim Amount:">
          <font>
             <Font size="15.0" />
          </font>

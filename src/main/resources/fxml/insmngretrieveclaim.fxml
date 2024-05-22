@@ -25,7 +25,7 @@
          </font>
       </Button>
       <Button fx:id="backBtn" layoutX="660.0" layoutY="12.0" mnemonicParsing="false" text="Back" />
-      <Text layoutX="98.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Customer ID:">
+      <Text layoutX="98.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Manager.Customer ID:">
          <font>
             <Font size="15.0" />
          </font>

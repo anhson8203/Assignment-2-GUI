@@ -1,3 +1,5 @@
+package Manager;
+
 import java.time.LocalDate;
 
 public class InsuranceCard {

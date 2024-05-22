@@ -54,7 +54,7 @@
             <Font size="15.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="97.0" layoutY="397.0" mnemonicParsing="false" text="Dependent">
+      <RadioButton layoutX="97.0" layoutY="397.0" mnemonicParsing="false" text="Manager.Dependent">
          <font>
             <Font size="15.0" />
          </font>
