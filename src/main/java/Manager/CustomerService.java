@@ -796,7 +796,7 @@ public class CustomerService {
         customers.add(beneficiary);
 
         try {
-            dataLoader.appendCustomerToFile(beneficiary);
+            dataLoader.appendPolicyHolderToFile(beneficiary);
             dataLoader.appendAccountToFile(beneficiaryId, role);
             System.out.println("\nManager.Customer added successfully!");
             System.out.println("An account is also created for the customer, with username is " + beneficiaryId + " and password is '1'.");
