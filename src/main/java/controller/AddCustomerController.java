@@ -106,6 +106,7 @@ public class AddCustomerController extends MainController {
             dependent.setPhoneNumber(phoneNumber.getText());
 
             PolicyHolder defaultPolicyHolder = new PolicyHolder();
+            defaultPolicyHolder.setId("c0000000");
             dependent.setPolicyHolder(defaultPolicyHolder);
 
             customers.add(dependent);
