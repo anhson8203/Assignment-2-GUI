@@ -18,12 +18,12 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Manager.Claim ID:">
+      <Text layoutX="97.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Claim ID:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter New Manager.Claim Amount:">
+      <Text layoutX="97.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter New Claim Amount:">
          <font>
             <Font size="15.0" />
          </font>

@@ -13,7 +13,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Manager.Customer ID">
+      <Text layoutX="97.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Customer ID">
          <font>
             <Font size="15.0" />
          </font>

@@ -96,9 +96,9 @@ public class DataLoader {
         PrintWriter writer = new PrintWriter(new File("src/main/resources/database/customers.txt"));
         for (Customer customer : customers) {
             if (customer instanceof PolicyHolder policyHolder) {
-                writer.println(customer.getId() + "," + customer.getFullName() + ",Manager.PolicyHolder," + policyHolder.getPhoneNumber() + "," + policyHolder.getAddress() + "," + policyHolder.getEmail());
+                writer.println(customer.getId() + "," + customer.getFullName() + ",PolicyHolder," + policyHolder.getPhoneNumber() + "," + policyHolder.getAddress() + "," + policyHolder.getEmail());
                 for (Dependent dependent : policyHolder.getDependents()) {
-                    writer.println(dependent.getId() + "," + dependent.getFullName() + ",Manager.Dependent," + policyHolder.getId() + "," + dependent.getPhoneNumber() + "," + dependent.getAddress() + "," + dependent.getEmail());
+                    writer.println(dependent.getId() + "," + dependent.getFullName() + ",Dependent," + policyHolder.getId() + "," + dependent.getPhoneNumber() + "," + dependent.getAddress() + "," + dependent.getEmail());
                 }
             }
         }
