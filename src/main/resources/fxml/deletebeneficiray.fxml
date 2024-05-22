@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="184.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DELETE A BENEFICIRARY" textAlignment="CENTER">
+      <Text layoutX="184.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Delete A Beneficiary" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>

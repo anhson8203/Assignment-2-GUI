@@ -14,7 +14,7 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Customer Full Name:">
+      <Text layoutX="97.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Customer full name:">
          <font>
             <Font size="15.0" />
          </font>
@@ -54,7 +54,7 @@
             <Font size="15.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="dependentRadioBtn" layoutX="97.0" layoutY="397.0" mnemonicParsing="false" text="Dependent">
+      <RadioButton fx:id="dependentRadioBtn" layoutX="97.0" layoutY="397.0" mnemonicParsing="false" text="Manager.Dependent">
          <font>
             <Font size="15.0" />
          </font>

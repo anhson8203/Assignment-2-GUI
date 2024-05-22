@@ -18,17 +18,17 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Beneficirary full name:">
+      <Text layoutX="97.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Beneficiary full name:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Beneficirary Phone Number:">
+      <Text layoutX="97.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Beneficiary Phone Number:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Beneficirary Address:">
+      <Text layoutX="97.0" layoutY="299.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Beneficiary Address:">
          <font>
             <Font size="15.0" />
          </font>
@@ -43,7 +43,7 @@
          </font>
       </Button>
       <Button layoutX="660.0" layoutY="12.0" mnemonicParsing="false" text="Back" />
-      <Text layoutX="97.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Beneficirary Email:">
+      <Text layoutX="97.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter new Beneficiary Email:">
          <font>
             <Font size="15.0" />
          </font>

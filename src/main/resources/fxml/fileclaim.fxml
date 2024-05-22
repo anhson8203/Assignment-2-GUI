@@ -33,7 +33,7 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="97.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Reciever Banking Info:">
+      <Text layoutX="97.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter Receiver Banking Info:">
          <font>
             <Font size="15.0" />
          </font>

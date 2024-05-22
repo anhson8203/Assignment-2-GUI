@@ -2,6 +2,7 @@ package controller;
 
 import Manager.*;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
@@ -49,10 +50,10 @@ public class DeleteCustomer extends MainController {
             try {
                 dataLoader.saveCustomers(customers);
             } catch (FileNotFoundException e) {
-                System.out.println("An error occurred while saving customers.");
+                showAlert("Error", "An error has occurred!", Alert.AlertType.ERROR);
             }
         } else {
-            System.out.println("Customer not found!");
+            showAlert("Error", "Customer not found!", Alert.AlertType.ERROR);
         }
     }
 }
