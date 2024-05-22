@@ -8,9 +8,3 @@ IM1,pass654,insurance manager
 admin,admin,admin
 c4366406,pass123,policy holder
 c645266,1,dependent
-c5301513,1,policy holder
-c5535325,1,policy holder
-c5225644,1,policy holder
-c6042152,1,policy holder
-c1354326,1,dependent
-c4232154,1,dependent

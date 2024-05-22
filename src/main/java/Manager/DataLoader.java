@@ -93,7 +93,7 @@ public class DataLoader {
     }
 
     public void saveCustomers(List<Customer> customers) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new File("src/main/resources/database/customers.txt"));
+        PrintWriter writer = new PrintWriter("src/main/resources/database/customers.txt");
         for (Customer customer : customers) {
             if (customer instanceof PolicyHolder policyHolder) {
                 writer.println(customer.getId() + "," + customer.getFullName() + ",PolicyHolder," + policyHolder.getPhoneNumber() + "," + policyHolder.getAddress() + "," + policyHolder.getEmail());
@@ -106,7 +106,7 @@ public class DataLoader {
     }
 
     public void saveInsuranceCards(List<InsuranceCard> insuranceCards) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new File("src/main/resources/database/insuranceCards.txt"));
+        PrintWriter writer = new PrintWriter("src/main/resources/database/insuranceCards.txt");
         for (InsuranceCard insuranceCard : insuranceCards) {
             writer.println(insuranceCard.getCardNumber() + "," + insuranceCard.getCardHolder().getId() + "," + insuranceCard.getPolicyOwner() + "," + insuranceCard.getExpirationDate());
         }
@@ -114,7 +114,7 @@ public class DataLoader {
     }
 
     public void saveClaims(List<Claim> claims) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new File("src/main/resources/database/claims.txt"));
+        PrintWriter writer = new PrintWriter("src/main/resources/database/claims.txt");
         for (Claim claim : claims) {
             List<String> documentNames = new ArrayList<>();
             for (String document : claim.getDocuments()) {
@@ -131,7 +131,7 @@ public class DataLoader {
     }
 
     public void saveAccounts(List<Login> logins) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new File("src/main/resources/database/accounts.txt"));
+        PrintWriter writer = new PrintWriter("src/main/resources/database/accounts.txt");
         for (Login login : logins) {
             writer.println(login.getUsername() + "," + login.getPassword() + "," + login.getRole());
         }
@@ -151,7 +151,7 @@ public class DataLoader {
     }
 
     public void saveProviders(List<Provider> providers) throws FileNotFoundException {
-        PrintWriter writer = new PrintWriter(new File("src/main/resources/database/providers.txt"));
+        PrintWriter writer = new PrintWriter("src/main/resources/database/providers.txt");
         for (Provider provider : providers) {
             if (provider instanceof InsuranceManager manager) {
                 String proposedClaims = manager.getProposedClaims().stream().map(Claim::getId).collect(Collectors.joining("|"));
