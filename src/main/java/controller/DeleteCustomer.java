@@ -36,12 +36,16 @@ public class DeleteCustomer extends MainController {
     }
 
     public void handleRemove() throws FileNotFoundException {
-        String customerId = id.getText();
         DataLoader dataLoader = new DataLoader();
+        String customerId = id.getText();
+
         List<Customer> customers;
         customers = dataLoader.loadCustomers();
         Customer customer = customers.stream().filter(c -> c.getId().equals(customerId)).findFirst().orElse(null);
-        if (customer != null) {
+
+        if (customer == null) {
+            showAlert("Error", "Customer not found!", Alert.AlertType.ERROR);
+        } else {
             if (customer instanceof Dependent dependent) {
                 PolicyHolder policyHolder = dependent.getPolicyHolder();
                 policyHolder.getDependents().remove(dependent);
@@ -49,11 +53,10 @@ public class DeleteCustomer extends MainController {
             customers.remove(customer);
             try {
                 dataLoader.saveCustomers(customers);
+                showAlert("Success", "Customer has been removed!", Alert.AlertType.INFORMATION);
             } catch (FileNotFoundException e) {
                 showAlert("Error", "An error has occurred!", Alert.AlertType.ERROR);
             }
-        } else {
-            showAlert("Error", "Customer not found!", Alert.AlertType.ERROR);
         }
     }
 }
