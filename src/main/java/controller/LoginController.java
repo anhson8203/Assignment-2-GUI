@@ -4,11 +4,6 @@ import Manager.Customer;
 import Manager.DataLoader;
 import Manager.Provider;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -45,15 +40,14 @@ public class LoginController extends MainController {
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine();
                 String[] parts = line.split(",");
+
                 if (parts.length == 3 && parts[0].equals(username) && parts[1].equals(password)) {
                     if (parts[2].equals("admin")) {
-                        //return new Login(parts[0], parts[1], "admin");
                         handleTransferRole("admin");
                         return;
                     }
                     for (Customer customer : customers) {
                         if (customer.getId().equals(username)) {
-                            //return new Login(parts[0], parts[1], parts[2]);
                             System.out.println(parts[2]);
                             handleTransferRole(parts[2].trim());
                             return;
@@ -62,7 +56,6 @@ public class LoginController extends MainController {
                     // Check for Manager.InsuranceSurveyor
                     for (Provider provider : providers) {
                         if (provider.getProviderID().equals(username)) {
-                            //return new Login(parts[0], parts[1], parts[2]);
                             handleTransferRole(parts[2].trim());
                             return;
                         }
@@ -74,7 +67,6 @@ public class LoginController extends MainController {
                         String[] insuranceCardParts = insuranceCardLine.split(",");
                         if (insuranceCardParts[2].equals(username)) {
                             handleTransferRole("policy owner");
-                            //return new Login(parts[0], parts[1], "policy owner");
                             return;
                         }
                     }
@@ -95,22 +87,14 @@ public class LoginController extends MainController {
     }
 
     public void handleTransferRole(String role) {
-        String path = null;
-        if (role.equals("admin")) {
-            path = "/fxml/admin.fxml";
-        }
-        if (role.equals("policy holder")) {
-            path = "/fxml/policyholder.fxml";
-        }
-        if (role.equals("dependent")) {
-            path = "/fxml/dependent.fxml";
-        }
-        if (role.equals("policy owner")) {
-            path = "/fxml/policyowner.fxml";
-        }
-        if (role.equals("insurance manager")) {
-            path = "/fxml/insurancemanager.fxml";
-        }
+        String path = switch (role) {
+            case "admin" -> "/fxml/admin.fxml";
+            case "policy holder" -> "/fxml/policyholder.fxml";
+            case "dependent" -> "/fxml/dependent.fxml";
+            case "policy owner" -> "/fxml/policyowner.fxml";
+            case "insurance manager" -> "/fxml/insurancemanager.fxml";
+            default -> null;
+        };
         handleTransfer(loginBtn, path);
     }
 }

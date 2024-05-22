@@ -11,9 +11,7 @@ public class PolicyHolder extends Customer {
         this.dependents = new ArrayList<>();
     }
 
-    public PolicyHolder() {
-
-    }
+    public PolicyHolder() {}
 
     public List<Dependent> getDependents() {
         return dependents;

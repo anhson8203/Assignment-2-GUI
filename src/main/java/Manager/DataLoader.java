@@ -65,7 +65,7 @@ public class DataLoader {
                     claim.setId(data[0]);
                     claim.setClaimDate(LocalDate.parse(data[1]));
                     claim.setInsuredPerson(insuredPerson);
-                    claim.setCardNumber(card); // set the Manager.InsuranceCard object, not the String
+                    claim.setCardNumber(card);
                     claim.setExamDate(LocalDate.parse(data[4]));
                     claim.setClaimAmount(Double.parseDouble(data[5]));
                     claim.setStatus(ClaimStatus.valueOf(data[6]));
@@ -96,9 +96,9 @@ public class DataLoader {
         PrintWriter writer = new PrintWriter(new File("src/main/resources/database/customers.txt"));
         for (Customer customer : customers) {
             if (customer instanceof PolicyHolder policyHolder) {
-                writer.println(customer.getId() + "," + customer.getFullName() + ",Manager.PolicyHolder," + policyHolder.getPhoneNumber() + "," + policyHolder.getAddress() + "," + policyHolder.getEmail());
+                writer.println(customer.getId() + "," + customer.getFullName() + ",PolicyHolder," + policyHolder.getPhoneNumber() + "," + policyHolder.getAddress() + "," + policyHolder.getEmail());
                 for (Dependent dependent : policyHolder.getDependents()) {
-                    writer.println(dependent.getId() + "," + dependent.getFullName() + ",Manager.Dependent," + policyHolder.getId() + "," + dependent.getPhoneNumber() + "," + dependent.getAddress() + "," + dependent.getEmail());
+                    writer.println(dependent.getId() + "," + dependent.getFullName() + ",Dependent," + policyHolder.getId() + "," + dependent.getPhoneNumber() + "," + dependent.getAddress() + "," + dependent.getEmail());
                 }
             }
         }
@@ -155,13 +155,13 @@ public class DataLoader {
         for (Provider provider : providers) {
             if (provider instanceof InsuranceManager manager) {
                 String proposedClaims = manager.getProposedClaims().stream().map(Claim::getId).collect(Collectors.joining("|"));
-                writer.println(manager.getProviderID() + "," + manager.getProviderName() + "," + manager.getProviderAddress() + ",Manager.InsuranceManager," + proposedClaims);
+                writer.println(manager.getProviderID() + "," + manager.getProviderName() + "," + manager.getProviderAddress() + ",InsuranceManager," + proposedClaims);
             } else if (provider instanceof InsuranceSurveyor surveyor) {
                 InsuranceManager manager = surveyor.getManager(providers);
                 if (manager != null) {
-                    writer.println(surveyor.getProviderID() + "," + surveyor.getProviderName() + "," + surveyor.getProviderAddress() + ",Manager.InsuranceSurveyor," + manager.getProviderID());
+                    writer.println(surveyor.getProviderID() + "," + surveyor.getProviderName() + "," + surveyor.getProviderAddress() + ",InsuranceSurveyor," + manager.getProviderID());
                 } else {
-                    writer.println(surveyor.getProviderID() + "," + surveyor.getProviderName() + "," + surveyor.getProviderAddress() + ",Manager.InsuranceSurveyor");
+                    writer.println(surveyor.getProviderID() + "," + surveyor.getProviderName() + "," + surveyor.getProviderAddress() + ",InsuranceSurveyor");
                 }
             }
         }
@@ -174,7 +174,7 @@ public class DataLoader {
         Scanner scanner = new Scanner(new File("src/main/resources/database/providers.txt"));
         while (scanner.hasNextLine()) {
             String[] data = scanner.nextLine().split(",");
-            if (data[3].equals("Manager.InsuranceManager")) {
+            if (data[3].equals("InsuranceManager")) {
                 InsuranceManager manager = new InsuranceManager(data[0], data[1], data[2]);
                 String[] claimIds = data[4].split("\\|");
                 for (String claimId : claimIds) {
@@ -184,7 +184,7 @@ public class DataLoader {
                 }
                 providers.add(manager);
                 managers.put(manager.getProviderID(), manager);
-            } else if (data[3].equals("Manager.InsuranceSurveyor")) {
+            } else if (data[3].equals("InsuranceSurveyor")) {
                 InsuranceSurveyor surveyor = new InsuranceSurveyor(data[0], data[1], data[2]);
                 providers.add(surveyor);
                 // Associate the surveyor with its manager
@@ -200,9 +200,17 @@ public class DataLoader {
         return providers;
     }
 
-    public void appendCustomerToFile(Customer customer) throws IOException {
+    public void appendPolicyHolderToFile(Customer customer) throws IOException {
         try (PrintWriter out = new PrintWriter(new FileWriter("src/main/resources/database/customers.txt", true))) {
-            String customerRole = customer instanceof PolicyHolder ? "Manager.PolicyHolder" : "Manager.Dependent";
+            String customerRole = customer instanceof PolicyHolder ? "PolicyHolder" : "Dependent";
+            String policyHolderId = customer instanceof Dependent ? ((Dependent) customer).getPolicyHolder().getId() : "";
+            out.println(customer.getId() + "," + customer.getFullName() + "," + customerRole + "," + policyHolderId + customer.getPhoneNumber() + "," + customer.getAddress() + "," + customer.getEmail());
+        }
+    }
+
+    public void appendDependentToFile(Customer customer) throws IOException {
+        try (PrintWriter out = new PrintWriter(new FileWriter("src/main/resources/database/customers.txt", true))) {
+            String customerRole = customer instanceof PolicyHolder ? "PolicyHolder" : "Dependent";
             String policyHolderId = customer instanceof Dependent ? ((Dependent) customer).getPolicyHolder().getId() : "";
             out.println(customer.getId() + "," + customer.getFullName() + "," + customerRole + "," + policyHolderId + "," + customer.getPhoneNumber() + "," + customer.getAddress() + "," + customer.getEmail());
         }

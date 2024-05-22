@@ -101,9 +101,9 @@ public class SystemService {
         customers.add(newCustomer);
 
         try {
-            dataLoader.appendCustomerToFile(newCustomer);
+            dataLoader.appendPolicyHolderToFile(newCustomer);
             dataLoader.appendAccountToFile(customerId, role);
-            System.out.println("\nManager.Customer added successfully!");
+            System.out.println("\nCustomer added successfully!");
             System.out.println("An account is also created for the customer, with username is " + customerId + " and password is '1'.");
         } catch (IOException e) {
             System.out.println("An error occurred while saving customers.");

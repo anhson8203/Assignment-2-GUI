@@ -105,7 +105,6 @@ public class Main {
                                 break;
                             case 2:
                                 // Code to propose a claim to manager
-
                                 break;
                             case 0:
                                 System.exit(0);

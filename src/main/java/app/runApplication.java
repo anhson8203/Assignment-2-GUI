@@ -13,7 +13,7 @@ public class runApplication extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/login.fxml")));
         Scene scene = new Scene(root);
-        primaryStage.setTitle("App");
+        primaryStage.setTitle("Insurance App");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
